@@ -5,7 +5,8 @@
                     <h3 class="text-2xl font-medium text-indigo-500">Laravel+Vue+Ts</h3>
                 </div>   
                 <!-- left header section -->
-                <div class="items-center hidden space-x-4 lg:flex">
+                
+                <div class="items-center hidden space-x-4 lg:flex" v-if="authenticated">
                     <div>
                         <router-link :to="{ name: 'users' }">
                             Users
@@ -22,15 +23,27 @@
             
             <!-- right header section -->
             <div class="">
-                <a href="#" class="tracking-wide text-sm text-gray-500">Logout</a>
+                <template v-if="authenticated">
+                    <a href="#" class="tracking-wide text-sm text-gray-500">
+                        {{ user.name }}
+                    </a>
+                </template>
+                
             </div>
             
         </nav>
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-export default ({
-    
-})
+    import Vue from 'vue'
+    import { mapGetters } from 'vuex'
+
+    export default {
+        computed: {
+            ...mapGetters({
+                authenticated: 'auth/authenticated',
+                user: 'auth/user',
+            })
+        }
+    }
 </script>
