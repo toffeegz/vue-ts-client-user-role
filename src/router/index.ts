@@ -3,12 +3,12 @@ import HomeView from '../views/HomeView.vue'
 import LoginView from '../views/LoginView.vue'
 import RoleView from '../views/RoleView.vue'
 import UserView from '../views/UserView.vue'
+import store from '@/store'
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    name: 'home',
-    component: HomeView
+    redirect: 'users'
   },
   {
     path: '/login',
@@ -18,12 +18,20 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/roles',
     name: 'roles',
-    component: RoleView
+    component: RoleView,
+    // beforeEnter: (to, from, next) => {
+    //   if(!store.getters['auth/authenticated']) {
+    //     return next({
+    //       name: 'login'
+    //     })
+    //   } 
+    //   next()
+    // }
   },
   {
     path: '/users',
     name: 'users',
-    component: UserView
+    component: UserView,
   },
   {
     path: '/about',

@@ -2,7 +2,7 @@ import axios from 'axios'
 
 export default {
     namespaced: true,
-    
+
     state: {
         token: null,
         user: null,
@@ -34,15 +34,23 @@ export default {
             dispatch('attempt', response.data.token)
         },
 
-        async attempt ({ commit }:any, token:any) {
-            commit('SET_TOKEN', token)
+        async attempt ({ commit, state }:any, token:any) {
+            if(token) {
+                commit('SET_TOKEN', token)
+            }
+
+            if (!state.token) {
+                return
+            }
+            
 
             try {
-                let response = await axios.get('auth/profile', {
-                    headers: {
-                        'Authorization': 'Bearer ' + token
-                    }
-                })
+                // let response = await axios.get('auth/profile', {
+                //     headers: {
+                //         'Authorization': 'Bearer ' + token
+                //     }
+                // })
+                let response = await axios.get('auth/profile')
                 commit('SET_USER', response.data)
             } catch (e) {
                 commit('SET_TOKEN', null)
