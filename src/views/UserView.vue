@@ -1,11 +1,11 @@
 <template>
-  <div class="home">
-      <NavigationBar></NavigationBar>
-      <div class="container">
-        Hi, Gezryl!aa
-        
-      </div>
-  </div>
+    <div id="users">
+        <NavigationBar></NavigationBar>
+        <div class="container">
+            Manage Users
+            
+        </div>
+    </div>
 </template>
 
 <script lang="ts">
@@ -17,5 +17,5 @@ import NavigationBar from '@/components/layouts/NavigationBar.vue'
     NavigationBar
   },
 })
-export default class HomeView extends Vue {}
+export default class UserView extends Vue {}
 </script>
