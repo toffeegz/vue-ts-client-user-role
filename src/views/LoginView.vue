@@ -43,11 +43,12 @@
 </template>
 
 <script lang="ts">
-    import axios from 'axios'
-    import { defineComponent } from "vue";
+    import axios from 'axios';
+    import { defineComponent } from 'vue';
+    import { mapActions } from 'vuex';
 
     export default defineComponent(
-        {
+    {
         name: 'login',
         data () {
             return {
@@ -58,9 +59,13 @@
             }
         },
         methods: {
-            async submit() {
-                let response = await axios.post('auth/login', this.form);
-                console.log(response.data);
+            ...mapActions({
+                login: 'auth/login'
+            }),
+            submit() {
+                // let response = this.login(this.form);
+                // console.log(this.login(this.form));
+                this.login(this.form)
             }
         },
     });
