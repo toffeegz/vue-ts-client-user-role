@@ -58,6 +58,8 @@
           </div>
           
         </section>
+
+        
         <!-- New Role Modal -->
         <div v-show="newRoleModal">
             <div class="py-12 bg-transparent transition duration-150 ease-in-out z-10 absolute top-0 right-0 bottom-0 left-0" id="modal">
