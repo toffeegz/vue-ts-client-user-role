@@ -243,7 +243,6 @@
                   location.reload();
               })
               .catch(function (error) {
-                  console.log(error.response);
                   if (error.response) {
                       xy.errors = error.response.data.errors;
                       xy.errors_exist = error.response.data.message;
