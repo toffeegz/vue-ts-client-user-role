@@ -1,5 +1,5 @@
 <template>
-        <nav class="w-full flex justify-between py-4 px-8 bg-white border border-gray-200 shadow-sm shadow-red-200 mb-2">
+        <nav class="w-full flex justify-between py-4 px-8 bg-white border border-gray-200 shadow-sm shadow-red-200 ">
             <div class="flex space-x-12">
                 <div class="flex items-center">
                     <h3 class="text-xl font-medium text-gray-800">Laravel+Vue+Ts</h3>
