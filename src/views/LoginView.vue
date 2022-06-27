@@ -9,19 +9,20 @@
                     <h2 class="text-2xl font-bold">Login</h2>
                 </div>
                 <form @submit.prevent="submit" class="space-y-4" method="POST">
+
+                    <div  v-if="errors_exist" class="bg-red-100 rounded-md text-red-400 border border-red-200 p-4">
+                        <div class="text-sm font-semibold mb-2">Something went wrong</div> 
+                        <div v-for="message in errors" class="text-xs items-center">
+                            <span>
+                                {{ message[0] }}
+                            </span>
+                        </div>
+                    </div>
                     <!-- username -->
                     <div class="flex flex-col">
                         <label class="text-sm text-gray-500">Email</label>
                         <input v-model="form.email" class="border rounded px-4 py-2 mt-2" type="email" placeholder="user@app.com"/>
-                        <div class="text-xs text-red-400 flex justify-between items-center">
-                            <span>
-                            <b>Error: </b>
-                            wrong username !
-                            </span>
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
-                        </div>
+                        
                     </div>
                     <div class="flex flex-col">
                         <label class="text-sm text-gray-500">Password</label>
@@ -66,6 +67,8 @@
                     email: null,
                     password: null,
                 },
+                errors: {},
+                errors_exist: false,
             }
         },
         methods: {
@@ -73,14 +76,18 @@
                 login: 'auth/login'
             }),
             submit() {
+                const xy = this
                 this.login(this.form)
                 .then(() => {
                     this.$router.replace({
                         name: 'users',
                     })
                 })
-                .catch(() => {
-                    console.log('failed')
+                .catch(function (error) {
+                    if (error.response) {
+                        xy.errors = error.response.data.errors
+                        xy.errors_exist = true
+                    }
                 })
             }
         },
