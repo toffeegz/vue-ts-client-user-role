@@ -2,7 +2,7 @@
         <nav class="w-full flex justify-between px-8 bg-white border border-gray-200 shadow-sm shadow-red-200 ">
             <div class="flex space-x-12">
                 <div class="flex items-center  py-4">
-                    <h3 class="text-xl font-medium text-gray-800">Laravel+Vue+Ts</h3>
+                    <h3 class="text-xl font-bold text-gray-800">Laravel+Vue</h3>
                 </div>   
                 <!-- left header section -->
                 
@@ -30,7 +30,7 @@
                             <svg class="w-5 h-5 ml-2 -mr-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
                         </button>
                     </span>
-                    <div v-show="userDropdown" class="dropdown-menu transition-all duration-300 transform origin-top-right -translate-y-2 scale-95">
+                    <div v-show="userDropdown" @focusout="handleFocusOut" class="dropdown-menu transition-all duration-300 transform origin-top-right -translate-y-2 scale-95">
                         <div class="mt-4 absolute right-0 w-56 origin-top-right bg-white border border-gray-300 divide-y divide-gray-100 rounded-md outline-none" aria-labelledby="headlessui-menu-button-1" id="headlessui-menu-items-117" role="menu">
                             <div class="px-4 py-3">         
                                 <p class="text-sm leading-5">Signed in as</p>
@@ -79,7 +79,7 @@
                         name: 'login'
                     })
                 })
-            }
+            },
         }
     });
 </script>
