@@ -76,7 +76,7 @@
                         <div class="space-y-5">
                             <div  v-if="errors_exist" class="bg-red-100 rounded-md text-red-400 border border-red-200 p-4">
                                 <div class="text-sm font-semibold mb-2">Something went wrong</div> 
-                                <div v-for="message in errors" class="text-xs items-center">
+                                <div v-for="message in errors" class="text-xs items-center" v-bind:key="message">
                                     <span>
                                     {{ message[0] }}
                                     </span>
@@ -97,7 +97,7 @@
                                 <label for="role_id" class="text-gray-800 text-sm font-bold leading-tight tracking-normal">Assign Role</label>
                                 <select name="role_id" id="role_id" v-model="form.role_id" class="mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-500 font-normal w-full h-10 flex px-4 text-sm border-gray-300 rounded border">
                                     <option value="null">- select role -</option>
-                                    <option v-for="(item,index) in roles" v-bind:value="item.id">{{ item.name }}</option>
+                                    <option v-for="(item , index) in roles" v-bind:value="item.id" v-bind:key="index">{{ item.name }}</option>
                                 </select>
                             </div>
                             <!-- password -->
@@ -143,7 +143,7 @@
                         <div class="space-y-5">
                             <div  v-if="errors_exist" class="bg-red-100 rounded-md text-red-400 border border-red-200 p-4">
                                 <div class="text-sm font-semibold mb-2">Something went wrong</div> 
-                                <div v-for="message in errors" class="text-xs items-center">
+                                <div v-for="message in errors" v-bind:key="message" class="text-xs items-center">
                                     <span>
                                     {{ message[0] }}
                                     </span>
@@ -164,7 +164,7 @@
                                 <label class="text-gray-800 text-sm font-bold leading-tight tracking-normal">Assign Role</label>
                                 <select name="role_id" v-model="formEdit.role_id" class="mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-500 font-normal w-full h-10 flex px-4 text-sm border-gray-300 rounded border">
                                     <option value="null">- select role -</option>
-                                    <option v-for="(item,index) in roles" v-bind:value="item.id">{{ item.name }}</option>
+                                    <option v-for="(item,index) in roles" v-bind:value="item.id" v-bind:key="index">{{ item.name }}</option>
                                 </select>
                             </div>
                             <!-- password -->
