@@ -164,7 +164,7 @@
                                 <label class="text-gray-800 text-sm font-bold leading-tight tracking-normal">Assign Role</label>
                                 <select name="role_id" v-model="formEdit.role_id" class="mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-500 font-normal w-full h-10 flex px-4 text-sm border-gray-300 rounded border">
                                     <option value="null">- select role -</option>
-                                    <option v-for="(item,index) in roles" v-bind:value="item.id" v-bind:key="index">{{ item.name }}</option>
+                                    <option v-for="(item,index) in roles" :value="item.id" v-bind:key="index">{{ item.name }}</option>
                                 </select>
                             </div>
                             <!-- password -->
